@@ -11,6 +11,11 @@ mortgageCalculatorApp.config(function ($routeProvider) {
             controller: 'MortgageCalculatorController',
             reloadOnSearch: false
         })
+        .when('/History', {
+            templateUrl: '/_StaticContent/Partials/MortgageCalculator/History.html',
+            controller: 'MortgageHistoryController',
+            reloadOnSearch: false
+        })
         .otherwise({
             templateUrl: '/_StaticContent/Partials/MortgageCalculator/MortgageCalculator.html',
             controller: 'MortgageCalculatorController',

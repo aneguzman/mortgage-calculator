@@ -1,0 +1,25 @@
+﻿<div class="col-md-12">
+    <h3>Mortgage Calculations History</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Amortization</th>
+                <th>Payment Frequency</th>
+                <th>Interest rate</th>
+                <th>Monthly Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="history in mortgageHistory">
+                <td>{{history.created | date: 'MM-dd-yyyy'}}</td>
+                <td>{{history.amount}}</td>
+                <td>{{history.amortization}}</td>
+                <td>{{history.paymentFrequency}}</td>
+                <td>{{history.interestRate.toFixed(2)}}</td>
+                <td>{{history.monthlyPayment.toFixed(2)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

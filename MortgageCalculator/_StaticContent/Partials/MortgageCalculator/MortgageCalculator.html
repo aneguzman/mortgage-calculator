@@ -1,30 +1,36 @@
 ﻿
-<div class="col-md-12">
+<div class="col-md-6">
     <h2>Mortgage Calculator</h2>
     <form class="col-md-12" style="margin-top: 30px;">
         <div class="form-group col-md-12">
             <label for="MortgageAmount">Mortgage Amount:</label>
-            <input type="text" class="form-control" id="MortgageAmount" placeholder="Mortgage Amount">
+            <input ng-model="mortgageInfo.amount" type="number" class="form-control" id="MortgageAmount" placeholder="e.g. 250000" min="1" max="9999999" step="0.1">
         </div>
 
         <div class="form-group col-md-12">
             <label for="Amortization">Amortization (years):</label>
-            <input id="Amortization" class="form-control" type="number" min="1" max="30" step="1" />
+            <input ng-model="mortgageInfo.amortization" id="Amortization" class="form-control" type="number" min="1" max="30" step="1" placeholder="e.g. 20"/>
         </div>
 
         <div class="form-group col-md-12">
             <label for="inputState">Payment Frequency:</label>
             <select id="inputState" class="form-control" disabled="disabled">
-                <option selected>Monthly</option>
+                <option value="monthly" selected>Monthly</option>
             </select>
         </div>
 
         <div class="form-group col-md-12">
             <label for="InterestRate">Interest rate:</label>
-            <input class="form-control" id="InterestRate" type="number" min="0.5" max="25" step="0.1" placeholder="Interest rate" />
+            <input ng-model="mortgageInfo.interestRate" class="form-control" id="InterestRate" type="number" min="0.5" max="25" step="0.1" placeholder="e.g. 1.5" />
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">Calculate</button>
+            <button type="submit" ng-click="calculateMonthlyPayment(mortgageInfo);" class="btn btn-primary">Calculate</button>
         </div>
     </form>
+    
+    <div class="col-md-12">
+        <h3>
+            Your estimated monthly payment: <span class="monthly-payment">${{monthlyPayment}}</span>
+        </h3>
+    </div>
 </div>

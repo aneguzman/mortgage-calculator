@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping
+  xmlns="urn:nhibernate-mapping-2.2"
+  assembly="MortgageCalculator"
+  namespace="MortgageCalculator.Models.Entities">
+
+  <class name="MortgageHistory" table="MortgageHistory">
+    <id name="Id" column="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Amount" column="Amount"/>
+    <property name="Amortization" column="Amortization"/>
+    <property name="PaymentFrequency" column="PaymentFrequency"/>
+    <property name="InterestRate" column="InterestRate"/>
+    <property name="MonthlyPayment" column="MonthlyPayment"/>
+    <property name="Created" column="Created"/>
+  </class>
+</hibernate-mapping>

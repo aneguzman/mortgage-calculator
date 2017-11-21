@@ -8,11 +8,11 @@ using MortgageCalculator.Models.Repositories;
 
 namespace MortgageCalculator.Controllers
 {
-    public class HomeController : Controller
+    public class MortgageController : Controller
     {
         private readonly IRepository _repository;
 
-        public HomeController(IRepository repository)
+        public MortgageController(IRepository repository)
         {
             _repository = repository;
         }
@@ -22,20 +22,13 @@ namespace MortgageCalculator.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult GetHistoryList()
         {
-            long id = 1;
-            var user =_repository.GetById<User>(id);
-            ViewBag.Message = user.Email;
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var history = _repository.WhereAllEq<MortgageHistory>(new Dictionary<string, string>());
+            return new CustomJson(new
+            {
+                history
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
