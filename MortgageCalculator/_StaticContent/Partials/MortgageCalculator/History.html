@@ -14,11 +14,11 @@
         <tbody>
             <tr ng-repeat="history in mortgageHistory">
                 <td>{{history.created | date: 'MM-dd-yyyy'}}</td>
-                <td>{{history.amount}}</td>
+                <td>{{history.amount | currency}}</td>
                 <td>{{history.amortization}}</td>
                 <td>{{history.paymentFrequency}}</td>
                 <td>{{history.interestRate.toFixed(2)}}</td>
-                <td>{{history.monthlyPayment.toFixed(2)}}</td>
+                <td>{{history.monthlyPayment.toFixed(2) | currency}}</td>
             </tr>
         </tbody>
     </table>

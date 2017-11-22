@@ -30,5 +30,33 @@
             });
             return deferred.promise;
         },
+
+        saveCalculationEntry: function (data) {
+            var deferred = $q.defer();
+            $http({
+                    method: "POST",
+                    url: "/Mortgage/AddCalculationEntry",
+                    data: data,
+                    cache: false
+                })
+                .success(function (data) {
+                    return deferred.resolve(data);
+                });
+            return deferred.promise;
+        },
+
+        sendMail: function (data) {
+            var deferred = $q.defer();
+            $http({
+                    method: "POST",
+                    url: "/Mortgage/SendMail",
+                    data: data,
+                    cache: false
+                })
+                .success(function (data) {
+                    return deferred.resolve(data);
+                });
+            return deferred.promise;
+        },
     };
 });

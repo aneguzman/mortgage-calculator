@@ -14,8 +14,8 @@
 
         <div class="form-group col-md-12">
             <label for="inputState">Payment Frequency:</label>
-            <select id="inputState" class="form-control" disabled="disabled">
-                <option value="monthly" selected>Monthly</option>
+            <select id="inputState" ng-model="mortgageInfo.paymentFrequency" class="form-control" disabled="disabled">
+                <option value="Monthly" selected>Monthly</option>
             </select>
         </div>
 
@@ -32,5 +32,17 @@
         <h3>
             Your estimated monthly payment: <span class="monthly-payment">${{monthlyPayment}}</span>
         </h3>
+    </div>
+    <div class="col-md-12" ng-show="calculationIsCompleted">
+        <h4>Do you want to send the results by email?</h4>
+        <div class="col-md-12">
+            <div class="form-group col-md-12">
+                <label for="Email">Email:</label>
+                <input ng-model="email" type="email" class="form-control" id="Email" placeholder="e.g. example@test.com">
+            </div>
+            <div class="col-md-12">
+                <button type="submit" ng-click="sendEmail(mortgageInfo, email);" class="btn btn-primary">Send Email</button>
+            </div>
+        </div>
     </div>
 </div>

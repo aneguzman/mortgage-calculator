@@ -3,14 +3,10 @@
     $scope.loadHistory = function () {
         mortgageService.getHistoryList()
             .then(function (data) {
-                if (data) {
-                    console.log(data.history);
+                if (data.success) {
                     $scope.mortgageHistory = data.history;
-//                    if (data.status != "success") {
-//                    } else {
-//                        console.log(data.history);
-//                        $scope.mortgageHistory = data.history;
-//                    }
+                } else {
+                    alert(data.message);
                 }
             },
             function () { //error

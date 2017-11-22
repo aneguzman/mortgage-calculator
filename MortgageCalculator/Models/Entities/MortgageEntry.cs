@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MortgageCalculator.Models.Entities
 {
-    public class MortgageHistory
+    public class MortgageEntry
     {
         public virtual long Id { get; set; }
         public virtual double Amount { get; set; }

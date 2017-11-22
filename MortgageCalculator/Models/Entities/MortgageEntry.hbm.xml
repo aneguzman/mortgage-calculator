@@ -4,7 +4,7 @@
   assembly="MortgageCalculator"
   namespace="MortgageCalculator.Models.Entities">
 
-  <class name="MortgageHistory" table="MortgageHistory">
+  <class name="MortgageEntry" table="MortgageEntry">
     <id name="Id" column="Id">
       <generator class="identity" />
     </id>

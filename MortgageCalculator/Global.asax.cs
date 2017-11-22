@@ -7,9 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using MortgageCalculator.Infrastructure;
-//using LoggerApi.Models.Repositories;
 using MortgageCalculator.Models.Entities;
 using MortgageCalculator.Models.Repositories;
+using MortgageCalculator.Services;
 using NHibernate;
 using Ninject;
 using Ninject.Web.Common.WebHost;
@@ -32,7 +32,7 @@ namespace MortgageCalculator
             // NHibernate configuration
             var configuration = new NHibernate.Cfg.Configuration();
             configuration.Configure();
-            configuration.AddAssembly(typeof(MortgageHistory).Assembly);
+            configuration.AddAssembly(typeof(MortgageEntry).Assembly);
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
 
             // Ninject
@@ -42,6 +42,7 @@ namespace MortgageCalculator
             container.Bind<ISessionFactory>().ToConstant(sessionFactory);
             container.Bind<ISessionManager>().To<SessionManager>();
             container.Bind<IRepository>().To<GenericRepository>();
+            container.Bind<IMortgageService>().To<MortgageService>();
 
             //            container.Bind<IApplicationService>().To<ApplicationService>();
             //            container.Bind<ITokenService>().To<TokenService>();

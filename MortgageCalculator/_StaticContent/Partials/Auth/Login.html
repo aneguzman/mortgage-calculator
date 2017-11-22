@@ -1,0 +1,24 @@
+﻿
+<div class="col-md-6">
+    <h2>Login</h2>
+    <form class="col-md-12" style="margin-top: 30px;">
+        <div class="form-group col-md-12">
+            <label for="Email">Email Address:</label>
+            <input ng-model="loginInfo.emailAddress" type="email" class="form-control" id="Email" placeholder="example@gmail.com">
+        </div>
+
+        <div class="form-group col-md-12">
+            <label for="Password">Password:</label>
+            <input ng-model="loginInfo.password" type="password" class="form-control" id="Password">
+        </div>
+        <div class="form-group col-md-12">
+            <label class="form-check-label">
+                <input type="checkbox" ng-model="loginInfo.rememberMe" class="form-check-input">
+                Remember me?
+            </label>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" ng-click="login();" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
