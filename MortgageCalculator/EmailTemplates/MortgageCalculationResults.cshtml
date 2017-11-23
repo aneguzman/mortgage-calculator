@@ -1,0 +1,60 @@
+﻿@model MortgageCalculator.Models.ViewModels.MortgageEntryViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Mortgage Calculator results</title>
+    <style>
+        table th {
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #888;
+            color: #fff;
+        }
+        table td {
+            padding: 20px;
+            background-color: #50b2b7;
+            border: 1px solid #fff;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body style="padding: 20px; background-color: #fff;">
+    <div>
+        <h3>Thanks for using the Mortgage Calculator! Here we have your results:</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Amount:</th>
+                    <td>$@Model.Amount</td>
+                </tr>
+                <tr>
+                    <th>Amortization:</th>
+                    <td>@Model.Amortization years</td>
+                </tr>
+                <tr>
+                    <th>Payment Frequency:</th>
+                    <td>@Model.PaymentFrequency</td>
+                </tr>
+                <tr>
+                    <th>Interest rate:</th>
+                    <td>@Model.InterestRate% / year</td>
+                </tr>
+                <tr>
+                    <th>Monthly Payment:</th>
+                    <td>$@Model.MonthlyPayment</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -38,6 +39,13 @@ namespace MortgageCalculator.Controllers
             private set => _signInManager = value;
         }
 
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
 
         [HttpPost]
         [AllowAnonymous]
@@ -50,6 +58,7 @@ namespace MortgageCalculator.Controllers
                     return new CustomJson(new
                     {
                         success = true,
+                        user = model.Email,
                     }, JsonRequestBehavior.DenyGet);
                 default:
                     return new CustomJson(new
@@ -76,7 +85,8 @@ namespace MortgageCalculator.Controllers
                 return new CustomJson(new
                 {
                     success = false,
-                    message = message
+                    user = model.Email,
+                    message
                 }, JsonRequestBehavior.DenyGet);
             }
                 
@@ -85,6 +95,17 @@ namespace MortgageCalculator.Controllers
             {
                 success = true,
             }, JsonRequestBehavior.DenyGet);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Logout()
+        {
+            HttpContext.Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return new CustomJson(new
+            {
+                success = true,
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿mortgageCalculatorApp.controller('LoginController', function ($scope, $routeParams, $location, loginService) {
+﻿mortgageCalculatorApp.controller('LoginController', function ($rootScope, $scope, $routeParams, $location, loginService, $window) {
 
     $scope.login = function() {
         loginService.login($scope.loginInfo)
             .then(function (data) {
                 if (data.success) {
-                    if ($scope.loginInfo.returnUrl !== undefined) {
-                        $location.path($scope.loginInfo.returnUrl);
-                    } else {
-                        $location.path('/History');
-                    }
+                    $window.localStorage.setItem('loggedUser', data.user);
+                    $rootScope.user = $window.localStorage.getItem('loggedUser');
+                    $location.path('/History');
                 } else {
                     alert(data.message);
                 }

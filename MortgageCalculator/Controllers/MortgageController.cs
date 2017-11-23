@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ using MortgageCalculator.Models.Entities;
 using MortgageCalculator.Models.Repositories;
 using MortgageCalculator.Models.ViewModels;
 using MortgageCalculator.Services;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace MortgageCalculator.Controllers
 {
@@ -16,6 +19,7 @@ namespace MortgageCalculator.Controllers
     {
         private readonly IMortgageService _mortgageService;
         private readonly string _errorMessage = "There was an erro when processing your request. Please try again";
+        private readonly string _emailSent = "Email sent successfully";
 
         public MortgageController(IMortgageService mortgageService)
         {
@@ -68,26 +72,13 @@ namespace MortgageCalculator.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SendMail(MortgageEntryViewModel mortgageEntry, string email)
+        public ActionResult SendMail(MortgageEntryViewModel mortgageEntry, string email)
         {
-            var body = "<h3>Mortgage Calculator results:</h3>" +
-                       $"Amount: {mortgageEntry.Amount} <br/> Amortization: {mortgageEntry.Amortization} years<br/>" +
-                       $"Payment frequency: {mortgageEntry.PaymentFrequency}<br/> Interest rate:{mortgageEntry.InterestRate}<br/>" +
-                       $"Monthly payment: {mortgageEntry.MonthlyPayment}";
-                       ;
-            var message = new MailMessage();
-            message.To.Add(new MailAddress(email));
-            message.Subject = "Your email subject";
-            message.Body = body;
-            message.IsBodyHtml = true;
-            using (var smtp = new SmtpClient())
-            {
-                await smtp.SendMailAsync(message);
-            }
+            var success = _mortgageService.SendEmail(mortgageEntry, email);
             return new CustomJson(new
             {
-                success = true,
-                message = "Email sent successfully"
+                success = success,
+                message = success ? _emailSent : _errorMessage
             }, JsonRequestBehavior.DenyGet);
         }
     }

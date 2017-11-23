@@ -14,6 +14,7 @@
     <script src="~/_StaticContent/Js/Controllers/mortgageCalculatorController.js"></script>
     <script src="~/_StaticContent/Js/Controllers/mortgageHistoryController.js"></script>
     <script src="~/_StaticContent/Js/Controllers/loginController.js"></script>
+    <script src="~/_StaticContent/Js/Controllers/logoutController.js"></script>
     <script src="~/_StaticContent/Js/Controllers/registerController.js"></script>
     <script src="~/_StaticContent/Js/Services/mortgageService.js"></script>
     <script src="~/_StaticContent/Js/Services/authHttpResponseMiddleware.js"></script>
@@ -36,11 +37,11 @@
                 <ul class="nav navbar-nav">
                     <li><a ng-href="#/">Calculator</a></li>
                     <li><a ng-href="#/History">History</a></li>
+                    <li><a ng-show="user" ng-href="#/Logout">Logout</a></li>
                 </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a ng-href="#/Login">Login</a></li>
-                    <li><a ng-href="#/Register">Register</a></li>
-                </ul>
+@*                <span class="pull-right">*@
+@*                    *@
+@*                </span>*@
             </div>
         </div>
     </div>
@@ -57,8 +58,6 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

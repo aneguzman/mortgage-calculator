@@ -110,6 +110,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.1.2\lib\net45\Remotion.Linq.dll</HintPath>
     </Reference>
@@ -240,6 +243,7 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="_StaticContent\Js\Controllers\logoutController.js" />
     <Content Include="_StaticContent\Js\Controllers\registerController.js" />
     <Content Include="_StaticContent\Js\Services\loginService.js" />
     <Content Include="_StaticContent\Js\Services\registerService.js" />
@@ -260,6 +264,9 @@
     <Content Include="_StaticContent\Partials\MortgageCalculator\History.html" />
     <Content Include="_StaticContent\Partials\Auth\Login.html" />
     <Content Include="_StaticContent\Partials\MortgageCalculator\MortgageCalculator.html" />
+    <Content Include="EmailTemplates\MortgageCalculationResults.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

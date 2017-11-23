@@ -4,6 +4,10 @@
         'ngCookies',
     ]);
 
+mortgageCalculatorApp.run(function($rootScope, $window) {
+    $rootScope.user = $window.localStorage.getItem('loggedUser') || null;
+});
+
 mortgageCalculatorApp.config(function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/', {
@@ -26,8 +30,10 @@ mortgageCalculatorApp.config(function ($routeProvider, $httpProvider) {
             controller: 'RegisterController',
             reloadOnSearch: false
         })
-        .when('/HistoryAdmin', {
-            templateUrl: '/Mortgage/HistoryAdmin',
+        .when('/Logout', {
+            templateUrl: '/Account/Logout',
+            controller: 'LogoutController',
+            reloadOnSearch: false
         })
         .otherwise({
             templateUrl: '/_StaticContent/Partials/MortgageCalculator/MortgageCalculator.html',

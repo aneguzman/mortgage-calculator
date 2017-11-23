@@ -16,6 +16,11 @@
         saveCalculationEntry(mortgageInfo);
     }
 
+    /**
+     * Sends mail to the selected user
+     * @param {Object} mortgageEntry - Object with mortgage data
+     * @param {string} email - The target mail
+     */
     $scope.sendEmail = function (mortgageEntry, email) {
         mortgageEntry.monthlyPayment = $scope.monthlyPayment;
         var data = {
@@ -25,12 +30,13 @@
         mortgageService.sendMail(data)
             .then(function (data) {
                     if (data.success) {
-                        alert(data.meassage);
+                        alert(data.message);
+                        $scope.calculationIsCompleted = false;
+                        $scope.email = '';
                     } else {
                         alert(data.message);
                     }
-                    $scope.calculationIsCompleted = false;
-
+                    
                 },
                 function () { //error
                     alert('There was an error processing your request. Please try again.');

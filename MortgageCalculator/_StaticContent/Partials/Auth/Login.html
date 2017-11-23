@@ -1,24 +1,25 @@
 ﻿
 <div class="col-md-6">
     <h2>Login</h2>
-    <form class="col-md-12" style="margin-top: 30px;">
+    <form class="col-md-12" style="margin-top: 30px;" ng-submit="login()">
         <div class="form-group col-md-12">
             <label for="Email">Email Address:</label>
-            <input ng-model="loginInfo.emailAddress" type="email" class="form-control" id="Email" placeholder="example@gmail.com">
+            <input ng-model="loginInfo.emailAddress" type="email" required class="form-control" id="Email" placeholder="example@gmail.com">
         </div>
 
         <div class="form-group col-md-12">
             <label for="Password">Password:</label>
-            <input ng-model="loginInfo.password" type="password" class="form-control" id="Password">
+            <input ng-model="loginInfo.password" type="password" required class="form-control" id="Password">
         </div>
         <div class="form-group col-md-12">
             <label class="form-check-label">
                 <input type="checkbox" ng-model="loginInfo.rememberMe" class="form-check-input">
                 Remember me?
             </label>
+            <span class="pull-right">If you don't have an account, <a href="#/Register">Register</a></span>
         </div>
         <div class="col-md-12">
-            <button type="submit" ng-click="login();" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
 </div>
