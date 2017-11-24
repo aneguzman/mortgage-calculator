@@ -47,6 +47,11 @@ namespace MortgageCalculator.Controllers
             }
         }
 
+        /// <summary>
+        /// Log the user into the app.
+        /// </summary>
+        /// <param name="model">Model with the login info.</param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model)
@@ -69,6 +74,11 @@ namespace MortgageCalculator.Controllers
             }
         }
 
+        /// <summary>
+        /// Create a new user and log in into the app.
+        /// </summary>
+        /// <param name="model">Model with the register info</param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterViewModel model)
@@ -97,6 +107,10 @@ namespace MortgageCalculator.Controllers
             }, JsonRequestBehavior.DenyGet);
         }
 
+        /// <summary>
+        /// Logout the user from the App
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Logout()

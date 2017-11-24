@@ -1,5 +1,14 @@
-﻿mortgageCalculatorApp.factory('loginService', function ($q, $http) {
+﻿/**
+ * Login service
+ */
+mortgageCalculatorApp.factory('loginService', function ($q, $http) {
     return {
+
+        /**
+         * Sends POST request to server for login
+         * @param {Object} data - The user data
+         * @returns {Promise<Object>} - Data object received from server.
+         */
         login: function(data) {
             var deferred = $q.defer();
             $http({

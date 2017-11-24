@@ -1,4 +1,7 @@
-﻿mortgageCalculatorApp.factory('mortgageService', function($http, $q) {
+﻿/**
+ * Mortgage Service
+ */
+mortgageCalculatorApp.factory('mortgageService', function ($http, $q) {
     return {
 
         /**

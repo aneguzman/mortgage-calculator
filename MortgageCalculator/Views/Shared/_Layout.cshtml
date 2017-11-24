@@ -10,17 +10,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
-    <script src="~/_StaticContent/Js/AppModule.js"></script>
-    <script src="~/_StaticContent/Js/Controllers/mortgageCalculatorController.js"></script>
-    <script src="~/_StaticContent/Js/Controllers/mortgageHistoryController.js"></script>
-    <script src="~/_StaticContent/Js/Controllers/loginController.js"></script>
-    <script src="~/_StaticContent/Js/Controllers/logoutController.js"></script>
-    <script src="~/_StaticContent/Js/Controllers/registerController.js"></script>
-    <script src="~/_StaticContent/Js/Services/mortgageService.js"></script>
-    <script src="~/_StaticContent/Js/Services/authHttpResponseMiddleware.js"></script>
-    <script src="~/_StaticContent/Js/Services/loginService.js"></script>
-    <script src="~/_StaticContent/Js/Services/registerService.js"></script>
-
+    @Scripts.Render("~/bundles/app-module")
+    @Scripts.Render("~/bundles/app-services")
+    @Scripts.Render("~/bundles/app-controllers")
 </head>
 <body ng-app="mortgageCalculatorApp" ng-cloak>
     <div class="navbar navbar-inverse navbar-fixed-top">

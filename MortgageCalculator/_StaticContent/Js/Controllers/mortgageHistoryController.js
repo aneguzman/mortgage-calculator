@@ -1,5 +1,8 @@
 ﻿mortgageCalculatorApp.controller('MortgageHistoryController', function ($scope, mortgageService) {
 
+    /**
+     * Get the list of mortgage calculation history
+     */
     $scope.loadHistory = function () {
         mortgageService.getHistoryList()
             .then(function (data) {

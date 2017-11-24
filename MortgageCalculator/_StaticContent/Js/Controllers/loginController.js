@@ -1,5 +1,8 @@
 ﻿mortgageCalculatorApp.controller('LoginController', function ($rootScope, $scope, $routeParams, $location, loginService, $window) {
 
+    /**
+     * Log the user into the application.
+     */
     $scope.login = function() {
         loginService.login($scope.loginInfo)
             .then(function (data) {

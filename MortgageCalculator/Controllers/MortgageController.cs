@@ -32,6 +32,10 @@ namespace MortgageCalculator.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Get the history of the calculation entries
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public ActionResult GetHistoryList()
         {
@@ -51,6 +55,11 @@ namespace MortgageCalculator.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Save a transaction in the DB.
+        /// </summary>
+        /// <param name="entry">Object with the mortgage info.</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddCalculationEntry(MortgageEntryViewModel entry)
         {
@@ -72,6 +81,12 @@ namespace MortgageCalculator.Controllers
             }, JsonRequestBehavior.DenyGet);
         }
 
+        /// <summary>
+        /// Send Email to a targe user.
+        /// </summary>
+        /// <param name="mortgageEntry">Object with the mortgage info.</param>
+        /// <param name="email">The target email</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult SendMail(MortgageEntryViewModel mortgageEntry, string email)
         {

@@ -1,4 +1,7 @@
-﻿mortgageCalculatorApp.factory('authHttpResponseMiddleware', function ($q, $location) {
+﻿/**
+ * Middleware that intercept an Unauthorized Response and redirect to the Login page
+ */
+mortgageCalculatorApp.factory('authHttpResponseMiddleware', function ($q, $location) {
     return {
         response: function(response) {
             if (response.status === 401) {

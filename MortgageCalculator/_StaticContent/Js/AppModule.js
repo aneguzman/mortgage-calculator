@@ -4,10 +4,17 @@
         'ngCookies',
     ]);
 
+/**
+ * Get the user info from the local storage.
+ */
 mortgageCalculatorApp.run(function($rootScope, $window) {
     $rootScope.user = $window.localStorage.getItem('loggedUser') || null;
 });
 
+
+/**
+ * Routing
+ */
 mortgageCalculatorApp.config(function ($routeProvider, $httpProvider) {
     $routeProvider
         .when('/', {

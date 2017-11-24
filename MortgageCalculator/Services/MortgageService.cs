@@ -21,6 +21,10 @@ namespace MortgageCalculator.Services
             _repository = repository;
         }
 
+        /// <summary>
+        /// Get the list of mortgage calcultion transactions
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<MortgageEntry> GetHistory()
         {
             var filters = new Dictionary<string, string>();
@@ -35,6 +39,10 @@ namespace MortgageCalculator.Services
             }
         }
 
+        /// <summary>
+        /// Saves the transaction in the DB
+        /// </summary>
+        /// <returns></returns>
         public bool SaveCalculationEntry(MortgageEntry entry)
         {
             try
@@ -49,6 +57,12 @@ namespace MortgageCalculator.Services
             return true;
         }
 
+        /// <summary>
+        /// Send email to a target user with the mortgage calculation info.
+        /// </summary>
+        /// <param name="mortgageEntry"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public bool SendEmail(MortgageEntryViewModel mortgageEntry, string email)
         {
             var templateUrl = Path.Combine(HttpContext.Current.Server.MapPath("~/EmailTemplates"), "MortgageCalculationResults.cshtml");

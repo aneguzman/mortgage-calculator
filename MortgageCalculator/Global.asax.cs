@@ -27,6 +27,10 @@ namespace MortgageCalculator
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        /// <summary>
+        /// Configure dependency injection with Ninject
+        /// </summary>
+        /// <returns></returns>
         protected override IKernel CreateKernel()
         {
             // NHibernate configuration
@@ -43,10 +47,6 @@ namespace MortgageCalculator
             container.Bind<ISessionManager>().To<SessionManager>();
             container.Bind<IRepository>().To<GenericRepository>();
             container.Bind<IMortgageService>().To<MortgageService>();
-
-            //            container.Bind<IApplicationService>().To<ApplicationService>();
-            //            container.Bind<ITokenService>().To<TokenService>();
-            //            container.Bind<ILogService>().To<LogService>();
             return container;
         }
     }

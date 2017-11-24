@@ -43,6 +43,10 @@
                 });
     }
 
+    /**
+     * Save the calculation entry
+     * @param {Object} data - The mortgage calculator info
+     */
     function saveCalculationEntry(data)
     {
         mortgageService.saveCalculationEntry(data)

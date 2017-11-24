@@ -1,5 +1,9 @@
 ﻿mortgageCalculatorApp.controller('RegisterController', function ($rootScope, $scope, $location, registerService, $window) {
 
+    /**
+     * Creates a new user and log in into the application
+     * @returns {} 
+     */
     $scope.register = function () {
         registerService.register($scope.registerInfo)
             .then(function (data) {

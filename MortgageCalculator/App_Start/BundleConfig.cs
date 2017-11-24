@@ -26,6 +26,27 @@ namespace MortgageCalculator
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //App module
+            bundles.Add(new Bundle("~/bundles/app-module")
+
+                .Include(
+                    "~/_StaticContent/Js/AppModule.js"
+                ));
+
+            //App services
+            bundles.Add(new Bundle("~/bundles/app-services")
+
+                .IncludeDirectory(
+                    "~/_StaticContent/Js/Services/", "*.js"
+                ));
+
+            //App services
+            bundles.Add(new Bundle("~/bundles/app-controllers")
+
+                .IncludeDirectory(
+                    "~/_StaticContent/Js/Controllers/", "*.js"
+                ));
         }
     }
 }

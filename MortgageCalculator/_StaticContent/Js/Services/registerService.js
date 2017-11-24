@@ -1,5 +1,14 @@
-﻿mortgageCalculatorApp.factory('registerService', function ($q, $http) {
+﻿/**
+ * Register service
+ */
+mortgageCalculatorApp.factory('registerService', function ($q, $http) {
     return {
+
+        /**
+         * Send POST request to server to register an user.
+         * @param {Object} data - The user data
+         * @returns {Promise<Object>} - Data object received from the server.
+         */
         register: function (data) {
             var deferred = $q.defer();
             $http({
