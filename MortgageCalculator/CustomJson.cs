@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using MortgageCalculator.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -11,7 +12,7 @@ namespace MortgageCalculator
 {
     public class CustomJson : ActionResult
     {
-        public CustomJson(object data, JsonRequestBehavior jsonRequestBehavior)
+        public CustomJson(CustomJsonModel data, JsonRequestBehavior jsonRequestBehavior)
         {
             Data = data;
             JsonRequestBehavior = jsonRequestBehavior;
@@ -21,7 +22,7 @@ namespace MortgageCalculator
 
         public string ContentType { get; set; }
 
-        public object Data { get; set; }
+        public CustomJsonModel Data { get; set; }
 
         public JsonRequestBehavior JsonRequestBehavior { get; set; }
 

@@ -221,6 +221,7 @@
     <Compile Include="Infrastructure\ISessionManager.cs" />
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomJsonModel.cs" />
     <Compile Include="Models\Entities\MortgageEntry.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\IdentityModels.cs" />

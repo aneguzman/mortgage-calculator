@@ -27,7 +27,7 @@ namespace MortgageCalculator.Services
             try
             {
                 var mortgageHistory = _repository.WhereAllEq<MortgageEntry>(filters);
-                return mortgageHistory;
+                return mortgageHistory ?? new List<MortgageEntry>();
             }
             catch (Exception e)
             {

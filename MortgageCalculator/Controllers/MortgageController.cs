@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using MortgageCalculator.Models;
 using MortgageCalculator.Models.Entities;
 using MortgageCalculator.Models.Repositories;
 using MortgageCalculator.Models.ViewModels;
@@ -18,7 +19,7 @@ namespace MortgageCalculator.Controllers
     public class MortgageController : Controller
     {
         private readonly IMortgageService _mortgageService;
-        private readonly string _errorMessage = "There was an erro when processing your request. Please try again";
+        private readonly string _errorMessage = "There was an error when processing your request. Please try again";
         private readonly string _emailSent = "Email sent successfully";
 
         public MortgageController(IMortgageService mortgageService)
@@ -37,16 +38,16 @@ namespace MortgageCalculator.Controllers
             var history = _mortgageService.GetHistory();
             if (history == null)
             {
-                return new CustomJson(new
+                return new CustomJson(new CustomJsonModel
                 {
-                    success = false,
-                    message = _errorMessage
+                    Success = false,
+                    Message = _errorMessage
                 }, JsonRequestBehavior.AllowGet);
             }
-            return new CustomJson(new
+            return new CustomJson(new CustomJsonModel
             {
-                success = true,
-                history
+                Success = true,
+                History = history
             }, JsonRequestBehavior.AllowGet);
         }
 
@@ -58,27 +59,31 @@ namespace MortgageCalculator.Controllers
                 var success = _mortgageService.SaveCalculationEntry(entry);
                 if (success)
                 {
-                    return new CustomJson(new
+                    return new CustomJson(new CustomJsonModel
                     {
-                        success = true,
+                        Success = true,
                     }, JsonRequestBehavior.DenyGet);
                 }
             }
-            return new CustomJson(new
+            return new CustomJson(new CustomJsonModel
             {
-                success = false,
-                message = _errorMessage
+                Success = false,
+                Message = _errorMessage
             }, JsonRequestBehavior.DenyGet);
         }
 
         [HttpPost]
         public ActionResult SendMail(MortgageEntryViewModel mortgageEntry, string email)
         {
-            var success = _mortgageService.SendEmail(mortgageEntry, email);
-            return new CustomJson(new
+            var success = false;
+            if (ModelState.IsValid)
             {
-                success = success,
-                message = success ? _emailSent : _errorMessage
+                success = _mortgageService.SendEmail(mortgageEntry, email);
+            }
+            return new CustomJson(new CustomJsonModel
+            {
+                Success = success,
+                Message = success ? _emailSent : _errorMessage
             }, JsonRequestBehavior.DenyGet);
         }
     }

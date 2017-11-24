@@ -33,7 +33,7 @@ mortgageCalculatorApp.config(function ($routeProvider, $httpProvider) {
         .when('/Logout', {
             templateUrl: '/Account/Logout',
             controller: 'LogoutController',
-            reloadOnSearch: false
+            disableCache: true
         })
         .otherwise({
             templateUrl: '/_StaticContent/Partials/MortgageCalculator/MortgageCalculator.html',

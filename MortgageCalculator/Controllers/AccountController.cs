@@ -55,16 +55,16 @@ namespace MortgageCalculator.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return new CustomJson(new
+                    return new CustomJson(new CustomJsonModel
                     {
-                        success = true,
-                        user = model.Email,
+                        Success = true,
+                        User = model.Email,
                     }, JsonRequestBehavior.DenyGet);
                 default:
-                    return new CustomJson(new
+                    return new CustomJson(new CustomJsonModel
                     {
-                        success = false,
-                        message = "Invalid login attempt."
+                        Success = false,
+                        Message = "Invalid login attempt."
                     }, JsonRequestBehavior.DenyGet);
             }
         }
@@ -82,18 +82,18 @@ namespace MortgageCalculator.Controllers
                 {
                     message += $"\n{resultError}";
                 }
-                return new CustomJson(new
+                return new CustomJson(new CustomJsonModel
                 {
-                    success = false,
-                    user = model.Email,
-                    message
+                    Success = false,
+                    User = model.Email,
+                    Message = message
                 }, JsonRequestBehavior.DenyGet);
             }
                 
             await SignInManager.SignInAsync(user, false, false);
-            return new CustomJson(new
+            return new CustomJson(new CustomJsonModel
             {
-                success = true,
+                Success = true,
             }, JsonRequestBehavior.DenyGet);
         }
 
@@ -102,9 +102,9 @@ namespace MortgageCalculator.Controllers
         public ActionResult Logout()
         {
             HttpContext.Request.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return new CustomJson(new
+            return new CustomJson(new CustomJsonModel
             {
-                success = true,
+                Success = true,
             }, JsonRequestBehavior.AllowGet);
         }
     }

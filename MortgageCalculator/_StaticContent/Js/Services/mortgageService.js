@@ -16,7 +16,7 @@
 
         /**
         * Gets the mortgage history list
-        * @returns {Promise<Array>} - The list of mortgage calculations
+        * @returns {Promise<Object>} - Data object with the list of calculation entries
         */
         getHistoryList: function () {
             var deferred = $q.defer();
@@ -31,6 +31,10 @@
             return deferred.promise;
         },
 
+        /**
+        * Saves the calculation entry 
+        * @returns {Promise<Object>} - Data object received from the server
+        */
         saveCalculationEntry: function (data) {
             var deferred = $q.defer();
             $http({
@@ -45,6 +49,10 @@
             return deferred.promise;
         },
 
+        /**
+        * Send email to a target user 
+        * @returns {Promise<Object>} - Data object received from the server
+        */
         sendMail: function (data) {
             var deferred = $q.defer();
             $http({
