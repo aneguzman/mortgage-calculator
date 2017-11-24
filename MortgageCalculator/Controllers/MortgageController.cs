@@ -27,11 +27,6 @@ namespace MortgageCalculator.Controllers
             _mortgageService = mortgageService;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         /// <summary>
         /// Get the history of the calculation entries
         /// </summary>
